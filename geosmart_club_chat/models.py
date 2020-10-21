@@ -16,10 +16,10 @@ class Message(models.Model):
     def __str__(self):
         return self.author.username
 
-    def last_15_messages():
-        return Message.objects.order_by('-timestamp').all()[:15]
+
 
 class Chat(models.Model):
+    id = models.CharField(primary_key=True, editable=False, max_length=25)
     participantes = models.ManyToManyField(Contact, related_name='chats')
     messages = models.ManyToManyField(Message,blank=True)
 
