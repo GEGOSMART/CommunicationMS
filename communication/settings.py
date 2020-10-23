@@ -26,8 +26,7 @@ SECRET_KEY = 'c#_nc6r2=irau@1ia=$*13(f)(s62_aws9s$xs)1h0_(qd%s01'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-# CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Application definition
 
@@ -40,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # ADDED FOR CHAT APP
     'channels',
-    'geosmart_club_chat',
     'rest_framework',
     'corsheaders',
+
+    'geosmart_club_chat',
 ]
 
 MIDDLEWARE = [
@@ -53,8 +53,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    
     'corsheaders.middleware.CorsMiddleware',
-    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'communication.urls'
@@ -91,22 +91,22 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'), #'communication_db',
-        'USER': os.environ.get('DB_USER'), #'root',
-        'PASSWORD': os.environ.get('DB_PASSWORD'), #'root',
-        'HOST': os.environ.get('DB_HOST'), #'127.0.0.1',
-        'PORT': os.environ.get('DB_PORT'), # 3306,
-    }
-    #  'default': {
-    #      'ENGINE': 'django.db.backends.mysql',
-    #      'NAME': 'communication_db',
-    #      'USER': 'root',
-    #      'PASSWORD': 'root',
-    #      'HOST': '127.0.0.1',
-    #      'PORT': 3306,
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': os.environ.get('DB_NAME'), #'communication_db',
+    #     'USER': os.environ.get('DB_USER'), #'root',
+    #     'PASSWORD': os.environ.get('DB_PASSWORD'), #'root',
+    #     'HOST': os.environ.get('DB_HOST'), #'127.0.0.1',
+    #     'PORT': os.environ.get('DB_PORT'), # 3306,
     # }
+     'default': {
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'communication_db',
+         'USER': 'root',
+         'PASSWORD': 'root',
+         'HOST': '127.0.0.1',
+         'PORT': 3306,
+    } 
 }
 
 # Password validation
@@ -147,3 +147,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True

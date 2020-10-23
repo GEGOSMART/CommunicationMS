@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.utils.safestring import mark_safe
 from django.views.generic import ListView
 from geosmart_club_chat.models import Chat, Message, Contact
-from geosmart_club_chat.serializers import ContactSerializer, ChatSerializer, MessageSerializer
+from geosmart_club_chat.api.serializers import ContactSerializer, ChatSerializer, MessageSerializer
 from rest_framework import mixins
 from rest_framework import generics
 from .models import Chat
@@ -25,27 +25,27 @@ def get_last_15_messages(chatId):
     return chat.messages.order_by('-timestamp').all()[:15]
 
 
-class ContactList(mixins.ListModelMixin,
-                    generics.GenericAPIView):
-    queryset = Contact.objects.all()
-    serializer_class = ContactSerializer
+# class ContactList(mixins.ListModelMixin,
+#                     generics.GenericAPIView):
+#     queryset = Contact.objects.all()
+#     serializer_class = ContactSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
 
-class MessageList(mixins.ListModelMixin,
-                    generics.GenericAPIView):
-    queryset = Message.objects.all()
-    serializer_class = MessageSerializer
+# class MessageList(mixins.ListModelMixin,
+#                     generics.GenericAPIView):
+#     queryset = Message.objects.all()
+#     serializer_class = MessageSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)
 
 
-class ChatList(mixins.ListModelMixin,
-                    generics.GenericAPIView):
-    queryset = Chat.objects.all()
-    serializer_class = ChatSerializer
+# class ChatList(mixins.ListModelMixin,
+#                     generics.GenericAPIView):
+#     queryset = Chat.objects.all()
+#     serializer_class = ChatSerializer
 
-    def get(self, request, *args, **kwargs):
-        return self.list(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#         return self.list(request, *args, **kwargs)

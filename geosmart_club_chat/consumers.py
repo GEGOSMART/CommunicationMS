@@ -10,7 +10,7 @@ User = get_user_model()
 class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
-        print(data)
+        print(data) 
         messages = get_last_15_messages(data['chatId'])
         print(messages)
         content = {
