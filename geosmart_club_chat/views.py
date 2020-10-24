@@ -1,12 +1,13 @@
 # from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
+from  django.contrib.auth import get_user_model
 from django.utils.safestring import mark_safe
 from django.views.generic import ListView
 from geosmart_club_chat.models import Chat, Message, Contact
 from geosmart_club_chat.api.serializers import ContactSerializer, ChatSerializer, MessageSerializer
 from rest_framework import mixins
 from rest_framework import generics
-from .models import Chat
+from .models import Chat, Contact
 import json
 
 def index(request):
@@ -24,6 +25,15 @@ def get_last_15_messages(chatId):
     chat = get_object_or_404(Chat, id=chatId)
     return chat.messages.order_by('-timestamp').all()[:15]
 
+User = get_user_model()
+
+def get_user_contact(username):
+    user = get_object_or_404(User, username=username)
+    contact = get_object_or_404(Contact,user=user)
+    return contact
+
+def get_current_chat(chatId):
+    return get_object_or_404(Chat, id=chatId)
 
 # class ContactList(mixins.ListModelMixin,
 #                     generics.GenericAPIView):
