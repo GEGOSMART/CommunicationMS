@@ -91,22 +91,22 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': os.environ.get('DB_NAME'), #'communication_db',
-    #     'USER': os.environ.get('DB_USER'), #'root',
-    #     'PASSWORD': os.environ.get('DB_PASSWORD'), #'root',
-    #     'HOST': os.environ.get('DB_HOST'), #'127.0.0.1',
-    #     'PORT': os.environ.get('DB_PORT'), # 3306,
-    # }
-     'default': {
-         'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'communication_db',
-         'USER': 'root',
-         'PASSWORD': 'root',
-         'HOST': '127.0.0.1',
-         'PORT': 3306,
-    } 
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': os.environ.get('DB_NAME'), #'communication_db',
+        'USER': os.environ.get('DB_USER'), #'root',
+        'PASSWORD': os.environ.get('DB_PASSWORD'), #'root',
+        'HOST': os.environ.get('DB_HOST'), #'127.0.0.1',
+        'PORT': os.environ.get('DB_PORT'), # 3306,
+    }
+    #  'default': {
+    #      'ENGINE': 'django.db.backends.mysql',
+    #      'NAME': 'communication_db',
+    #      'USER': 'root',
+    #      'PASSWORD': 'root',
+    #      'HOST': '127.0.0.1',
+    #      'PORT': 3306,
+    # } 
 }
 
 # Password validation
