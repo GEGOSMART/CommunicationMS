@@ -101,7 +101,7 @@ DATABASES = {
     }
     #  'default': {
     #      'ENGINE': 'django.db.backends.mysql',
-    #      'NAME': 'communication_db',
+    #      'NAME': 'communication_db_no_user', # 'communication_db',
     #      'USER': 'root',
     #      'PASSWORD': 'root',
     #      'HOST': '127.0.0.1',

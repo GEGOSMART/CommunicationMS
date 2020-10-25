@@ -4,20 +4,23 @@ from django.db import models
 User = get_user_model()
 
 class Contact(models.Model):
-    user = models.ForeignKey(User, related_name='friends', on_delete=models.CASCADE)
+    #user = models.ForeignKey(User, related_name='friends', on_delete=models.CASCADE)
+    username = models.CharField(primary_key=True, default="def_user", max_length=20) #editable=False
+    firstname = models.CharField(max_length=25, default='null')
+    lastname = models.CharField(max_length=30, default='null')
     friends = models.ManyToManyField('self', blank=True)
 
     def __str__(self):
-        return self.user.username
+        return self.username
 
 
 class Message(models.Model):
-    author = models.ForeignKey(Contact, related_name='messages', on_delete=models.CASCADE)
+    author = models.ForeignKey(Contact,db_column='username', related_name='messages', on_delete=models.CASCADE)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return ''+self.author.user.username+': '+self.content#"{}".format(self.content)
+        return ''+self.author.username+': '+self.content#"{}".format(self.content)
 
 
 

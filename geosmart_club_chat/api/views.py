@@ -48,8 +48,8 @@ class ContactViewSet(viewsets.ModelViewSet):
 User = get_user_model()
 
 def get_user_contact(username):
-    user = get_object_or_404(User,username = username)
-    contact = get_object_or_404(Contact, user = user)
+    #user = get_object_or_404(User,username = username)
+    contact = get_object_or_404(Contact, username = username)
     return contact
 
 class ChatListView(ListAPIView):
