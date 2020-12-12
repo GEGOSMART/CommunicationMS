@@ -83,7 +83,8 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [('127.0.0.1', 6379)],
+            "hosts": [('18.210.193.21', 6379)], #external node connection
+            #"hosts": [('127.0.0.1', 6379)], #local connection
         },
     },
 }
@@ -91,15 +92,15 @@ CHANNEL_LAYERS = {
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.environ.get('DB_NAME'), #'communication_db',
-        'USER': os.environ.get('DB_USER'), #'root',
-        'PASSWORD': os.environ.get('DB_PASSWORD'), #'root',
-        'HOST': os.environ.get('DB_HOST'), #'127.0.0.1',
-        'PORT': os.environ.get('DB_PORT'), # 3306,
-    }
-    #  'default': {
+    # 'default': {  #SINGLE CONTAINER
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': os.environ.get('DB_NAME'), #'communication_db',
+    #     'USER': os.environ.get('DB_USER'), #'root',
+    #     'PASSWORD': os.environ.get('DB_PASSWORD'), #'root',
+    #     'HOST': os.environ.get('DB_HOST'), #'127.0.0.1',
+    #     'PORT': os.environ.get('DB_PORT'), # 3306,
+    # }
+    #  'default': {   #LOCAL
     #      'ENGINE': 'django.db.backends.mysql',
     #      'NAME': 'communication_db_no_user', # 'communication_db',
     #      'USER': 'root',
@@ -107,6 +108,14 @@ DATABASES = {
     #      'HOST': '127.0.0.1',
     #      'PORT': 3306,
     # } 
+         'default': {   
+         'ENGINE': 'django.db.backends.mysql',
+         'NAME': 'communication_db', 
+         'USER': 'super',
+         'PASSWORD': 'super',
+         'HOST': '18.210.193.21',
+         'PORT': 3306,
+    } 
 }
 
 # Password validation
