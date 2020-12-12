@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 COPY . /code/
 ARG URL=0.0.0.0:8000
 
-CMD ["sh", "-c", "python manage.py makemigrations geosmart_club_chat && python manage.py migrate && python manage.py runserver $URL"]
+CMD ["sh", "-c", "python manage.py makemigrations geosmart_club_chat && python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
